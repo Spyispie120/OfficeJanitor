@@ -6,13 +6,13 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 .utmp/
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+OfficeJanitor/[Ll]ibrary/
+OfficeJanitor/[Tt]emp/
+OfficeJanitor/[Oo]bj/
+OfficeJanitor/[Bb]uild/
+OfficeJanitor/[Bb]uilds/
+OfficeJanitor/[Ll]ogs/
+OfficeJanitor/[Uu]ser[Ss]ettings/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
@@ -21,10 +21,10 @@
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
-/[Mm]emoryCaptures/
+OfficeJanitor/[Mm]emoryCaptures/
 
 # Recordings can get excessive in size
-/[Rr]ecordings/
+OfficeJanitor/[Rr]ecordings/
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -84,23 +84,23 @@ crashlytics-build.properties
 InitTestScene*.unity*
 
 # Addressables default ignores, before user customizations
-/ServerData
-/[Aa]ssets/StreamingAssets/aa*
-/[Aa]ssets/AddressableAssetsData/link.xml*
-/[Aa]ssets/Addressables_Temp*
+OfficeJanitor/ServerData
+OfficeJanitor/[Aa]ssets/StreamingAssets/aa*
+OfficeJanitor/[Aa]ssets/AddressableAssetsData/link.xml*
+OfficeJanitor/[Aa]ssets/Addressables_Temp*
 # By default, Addressables content builds will generate addressables_content_state.bin
 # files in platform-specific subfolders, for example:
 # /Assets/AddressableAssetsData/OSX/addressables_content_state.bin
-/[Aa]ssets/AddressableAssetsData/*/*.bin*
+OfficeJanitor/[Aa]ssets/AddressableAssetsData/*/*.bin*
 
 # Visual Scripting auto-generated files
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+OfficeJanitor/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
+OfficeJanitor/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+OfficeJanitor/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
+OfficeJanitor/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
 
 # Auto-generated scenes by play mode tests
-/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+OfficeJanitor/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # Auto-generated cache in Assets folder
-/[Aa]ssets/[Ss]ceneDependencyCache*
+OfficeJanitor/[Aa]ssets/[Ss]ceneDependencyCache*
