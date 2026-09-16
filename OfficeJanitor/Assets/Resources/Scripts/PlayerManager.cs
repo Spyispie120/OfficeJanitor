@@ -45,12 +45,12 @@ namespace OGS
             float delta = Time.deltaTime;
 
             inputHandler.TickInput(delta);
-            playerLocomotion?.HandleMovement(delta);
         }
 
         private void FixedUpdate()
         {
-            
+            // Rigidbody movement must be applied on the fixed timestep to avoid jitter
+            playerLocomotion?.HandleMovement(Time.fixedDeltaTime);
         }
 
         private void LateUpdate()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 namespace OGS
 {
@@ -40,6 +41,19 @@ namespace OGS
         [SerializeField]
         private float bumpOffLedgeSpeed = 10f;
 
+        [Header("Camera Zoom")]
+        [SerializeField]
+        private CinemachineOrbitalFollow orbitalFollow;
+        [SerializeField]
+        private float minZoomDistance = 3f;
+        [SerializeField]
+        private float maxZoomDistance = 12f;
+        [SerializeField]
+        private float zoomSpeed = 2f;
+        [SerializeField]
+        private float zoomLerpSpeed = 8f;
+        private float targetZoomRadius;
+
         void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
@@ -50,6 +64,14 @@ namespace OGS
             myTransform = transform;
             playerManager.IsGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+
+            // Interpolation smooths visuals between fixed physics steps
+            Rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+
+            if (orbitalFollow != null)
+            {
+                targetZoomRadius = orbitalFollow.Radius;
+            }
         }
 
         #region Movement
@@ -58,11 +80,26 @@ namespace OGS
 
         public void HandleMovement(float delta)
         {
+            HandleCameraZoom(delta);
+
             if (playerManager.IsInteracting)
             {
                 return;
             }
             HandleWalking();
+            HandleRotation(delta);
+        }
+
+        private void HandleCameraZoom(float delta)
+        {
+            if (orbitalFollow == null)
+            {
+                return;
+            }
+
+            targetZoomRadius -= inputHandler.Zoom * zoomSpeed;
+            targetZoomRadius = Mathf.Clamp(targetZoomRadius, minZoomDistance, maxZoomDistance);
+            orbitalFollow.Radius = Mathf.Lerp(orbitalFollow.Radius, targetZoomRadius, zoomLerpSpeed * delta);
         }
 
         private void HandleWalking()
