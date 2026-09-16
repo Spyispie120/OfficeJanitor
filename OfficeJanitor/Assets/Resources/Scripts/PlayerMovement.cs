@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public bool RollFlag { get; set; }
     [field: SerializeField]
     public bool SprintFlag { get; set; }
+    [field: SerializeField]
+    public float Zoom { get; private set; }
     public float rollInputTimer;
 
     private InputSystem_Actions _inputActions;
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveInput(delta);
         CameraInput(delta);
+        ZoomInput(delta);
     }
 
     private void MoveInput(float delta)
@@ -60,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
         cameraInput = _inputActions.Player.Look.ReadValue<Vector2>();
         MouseX = cameraInput.x;
         MouseY = cameraInput.y;
+    }
+
+    private void ZoomInput(float delta)
+    {
+        Zoom = _inputActions.Player.CamZoom.ReadValue<Vector2>().y;
     }
 
 }
