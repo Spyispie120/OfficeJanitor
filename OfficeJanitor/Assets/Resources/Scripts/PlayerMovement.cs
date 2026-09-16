@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnEnable()
     {
-        if(_inputActions == null)
+        if (_inputActions == null)
         {
             _inputActions = new InputSystem_Actions();
 
