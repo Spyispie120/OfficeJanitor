@@ -31,9 +31,6 @@ public class PlayerMovement : MonoBehaviour
         if (_inputActions == null)
         {
             _inputActions = new InputSystem_Actions();
-
-            _inputActions.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-            _inputActions.Player.Look.performed += ctx => cameraInput = ctx.ReadValue<Vector2>();
         }
 
         _inputActions.Enable();
@@ -52,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveInput(float delta)
     {
+        movementInput = _inputActions.Player.Move.ReadValue<Vector2>();
         Horizontal = movementInput.x;
         Vertical = movementInput.y;
         MoveAmount = Mathf.Clamp01(Mathf.Abs(Horizontal) + Mathf.Abs(Vertical));
@@ -59,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CameraInput(float delta)
     {
+        cameraInput = _inputActions.Player.Look.ReadValue<Vector2>();
         MouseX = cameraInput.x;
         MouseY = cameraInput.y;
     }
