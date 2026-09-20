@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 
-namespace OGS
+namespace Assets.Resources.Scripts.Player
 {
     public class PlayerLocomotion : MonoBehaviour
     {
@@ -42,7 +42,6 @@ namespace OGS
         private float bumpOffLedgeSpeed = 10f;
 
         [Header("Camera Zoom")]
-        [SerializeField]
         private CinemachineOrbitalFollow orbitalFollow;
         [SerializeField]
         private float minZoomDistance = 3f;
@@ -72,6 +71,16 @@ namespace OGS
             {
                 targetZoomRadius = orbitalFollow.Radius;
             }
+        }
+
+        /// <summary>
+        /// Assigns the Cinemachine orbital follow component this player should zoom, and
+        /// initializes the zoom target from its current radius so zoom doesn't snap.
+        /// </summary>
+        public void SetOrbitalFollow(CinemachineOrbitalFollow orbitalFollow)
+        {
+            this.orbitalFollow = orbitalFollow;
+            targetZoomRadius = orbitalFollow != null ? orbitalFollow.Radius : targetZoomRadius;
         }
 
         #region Movement
@@ -105,7 +114,7 @@ namespace OGS
         private void HandleWalking()
         {
             Debug.Log($"dir:{moveDirection} cam:{cameraObject} ver{inputHandler.Vertical} hor{inputHandler.Horizontal}");
-        
+
             moveDirection = cameraObject.forward * inputHandler.Vertical;
             moveDirection += cameraObject.right * inputHandler.Horizontal;
             moveDirection.Normalize();
