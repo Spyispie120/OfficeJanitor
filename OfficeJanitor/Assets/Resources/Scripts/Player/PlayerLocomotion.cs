@@ -113,7 +113,7 @@ namespace Assets.Resources.Scripts.Player
 
         private void HandleWalking()
         {
-            Debug.Log($"dir:{moveDirection} cam:{cameraObject} ver{inputHandler.Vertical} hor{inputHandler.Horizontal}");
+            // Debug.Log($"dir:{moveDirection} cam:{cameraObject} ver{inputHandler.Vertical} hor{inputHandler.Horizontal}");
 
             moveDirection = cameraObject.forward * inputHandler.Vertical;
             moveDirection += cameraObject.right * inputHandler.Horizontal;

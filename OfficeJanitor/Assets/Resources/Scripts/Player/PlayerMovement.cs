@@ -1,7 +1,8 @@
 using UnityEngine;
+using Unity.Netcode;
 namespace Assets.Resources.Scripts.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : NetworkBehaviour
     {
         [field: SerializeField]
         public float Horizontal { get; private set; }
@@ -28,19 +29,21 @@ namespace Assets.Resources.Scripts.Player
         Vector2 cameraInput;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-        public void OnEnable()
+        public override void OnNetworkSpawn()
         {
-            if (_inputActions == null)
-            {
-                _inputActions = new InputSystem_Actions();
-            }
+            base.OnNetworkSpawn();
+            if (!IsOwner) return;
 
+            _inputActions = new InputSystem_Actions();
             _inputActions.Enable();
         }
 
-        private void OnDisable()
+        public override void OnNetworkDespawn()
         {
-            _inputActions.Disable();
+            base.OnNetworkDespawn();
+            if (!IsOwner) return;
+
+            _inputActions?.Disable();
         }
 
         public void TickInput(float delta)
