@@ -19214,7 +19214,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1381402315}
-    PlayerPrefab: {fileID: 5376712268303001633, guid: be4671a3744aa0041bba260cfc28944b, type: 3}
+    PlayerPrefab: {fileID: 2900212280954951047, guid: 1fe51e8ce519fda4fbd542b69556d35f, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 3ebbe493a33d6104bb1e10206a74b9e9, type: 2}
@@ -29114,6 +29114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b57359e7a348c841932251d1b490b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  ShowTopMostFoldoutHeaderGroup: 1
   <Horizontal>k__BackingField: 0
   <Vertical>k__BackingField: 0
   <MoveAmount>k__BackingField: 0
